@@ -8,6 +8,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\UserForm;
+
 
 class SiteController extends Controller
 {
@@ -92,5 +94,16 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+    
+    
+    public function actionUserform(){
+        $model = new UserForm;
+        
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            
+        }else {
+            return $this->render('userform', ['model'=>$model]);
+        }
     }
 }
